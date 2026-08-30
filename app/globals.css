@@ -3,7 +3,7 @@
 :root {
      --main: #1b4967;
      --sec: #5fa8da;
-     --bg: lch(91.09% 8.41 247.02);
+     --bg: #d7e8f4;
      --tint: #0b1c28;
      --shadow: 4px 6px 0px var(--tint);
 }
@@ -29,6 +29,15 @@
 @utility bg-hatch-diagonal {
      background-image: repeating-linear-gradient(45deg, --alpha(var(--main) / 50%) 0 1px, transparent 1px 9px);
      mask-image: radial-gradient(ellipse at bottom left, #000 10%, transparent 70%);
+}
+
+@keyframes slideIn {
+     from {
+          transform: translateX(100%);
+     }
+     to {
+          transform: translateX(0);
+     }
 }
 
 .borderimage {

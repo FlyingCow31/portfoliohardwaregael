@@ -12,7 +12,7 @@ export default function Footer() {
                     <p>CGV</p>
                </Link>
                <Link href={"https://gaeltournier.dev"}>Créez votre propre site internet</Link>
-               <p className="lg:ml-auto">© 2026 Gaël Tournier</p>
+               <p className="lg:ml-auto opacity-50">© 2026 Gaël Tournier</p>
           </footer>
      )
 }

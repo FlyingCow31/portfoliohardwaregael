@@ -11,8 +11,8 @@ type Prestas = {
 export default function Prestations({ client = "Particulier", date, title, desc, images }: Prestas) {
      return (
           <>
-               <hr className="w-[80%] mx-auto border-2 border-main" />
-               <div className="flex p-12 w-[80%] mx-auto">
+               <hr className=" w-[90%] lg:w-[80%] mx-auto border-2 border-main" />
+               <div className="flex lg:flex-row flex-col p-12 w-[90%] lg:w-[80%] mx-auto">
                     <div className="flex flex-col">
                          <p className="text-xl opacity-70 text-tint">
                               Client: <span className="italic">{client}</span>
@@ -20,10 +20,10 @@ export default function Prestations({ client = "Particulier", date, title, desc,
                          <p className="text-xl opacity-70 text-tint">
                               Réalisé le: <span className="italic">{date}</span>
                          </p>
-                         <h3 className="font-bagel text-4xl py-4">{title}</h3>
+                         <h3 className="font-bagel text-5xl lg:text-4xl py-4">{title}</h3>
                          <p className="text-xl opacity-70 text-tint w-[90%] mt-8">{desc}</p>
                     </div>
-                    <div className="flex gap-6 ml-auto">
+                    <div className="flex lg:flex-row flex-col gap-6 ml-auto lg:mt-0 mt-6">
                          {images.map(({ src, alt }, i) => (
                               <Image
                                    key={i}
@@ -36,7 +36,7 @@ export default function Prestations({ client = "Particulier", date, title, desc,
                          ))}
                     </div>
                </div>
-               <hr className="w-[80%] mx-auto border-2 border-main" />
+               <hr className="w-[90%] lg:w-[80%] mx-auto border-2 border-main" />
           </>
      )
 }
