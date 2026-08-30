@@ -1,69 +1,121 @@
-import Image from "next/image";
+import Link from "next/link"
+import Navbar from "./components/Navbar"
+import HeroCard from "./components/Cards"
+import Prestations from "./components/Presta"
+import Footer from "./components/Footer"
+
+const HeroCardTexts = [
+     {
+          title: "Déplacements",
+          description:
+               "Je me déplace sur Colomiers gratuitement, et sur Toulouse et villes alentours pour 1€/km depuis mon atelier. Vous pouvez également venir à mon atelier gratuitement!",
+          cta: (
+               <Link href={"/"} className="w-fit h-fit self-center">
+                    <p className="bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
+                         + d'Infos
+                    </p>
+               </Link>
+          ),
+     },
+     {
+          title: "Configuration",
+          description:
+               "Je propose des services de A à Z: commande et recherche des pièces, montage et optimisation. Explications gratuites!",
+          cta: (
+               <Link href={"/"} className="w-fit h-fit self-center mt-auto">
+                    <p className="bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
+                         + d'Infos
+                    </p>
+               </Link>
+          ),
+     },
+]
+
+const PrestationsList = [
+     {
+          client: "Gaël Tournier",
+          date: "09/09/2026",
+          title: "Config gaming 1440p",
+          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
+          images: [
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+          ],
+     },
+]
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+     return (
+          <>
+               <main className="bg-bg min-h-screen pb-100">
+                    <Navbar />
+                    <div className="bg-bg p-3 font-">
+                         <section className="relative overflow-hidden rounded-lg bg-brand-base px-10 py-12 h-screen">
+                              <div className="bg-blobs pointer-events-none absolute inset-0" />
+                              <div className="bg-hatch-diagonal pointer-events-none absolute bottom-0 left-0 h-64 w-64" />
+
+                              <div className="relative lg:grid grid-cols-5 lg:grid-rows-[auto_1fr_auto_auto] ">
+                                   <h1 className="font-bagel text-7xl col-span-full py-12">
+                                        Réparation, montage et diagnostic <br /> PC portables et fixes.
+                                   </h1>
+                                   <p className="row-start-3 col-span-3 pb-20 text-xl">
+                                        Avec 6 ans d'experience dans le montage, démontage et réparation de PC, je viens
+                                        aujourd'hui à votre secours! Je me déplace chez vous ou vous accueille dans mon
+                                        atelier pour résoudre vos problèmes techniques, vous monter votre configuration
+                                        PC de rêve ou même vous conseiller sur vos composants. Que vous soyez un gamer
+                                        qui recherche la performance avec de l'optimisation, ou un grand-parent voulant
+                                        faire plaisir à votre petit fils (ou petite fille!), je vous accompagne !
+                                   </p>
+                                   <Link href={"/contact"} className="row-start-4 col-start-1 h-fit">
+                                        <p className="border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
+                                             Prendez Rendez-Vous →
+                                        </p>
+                                   </Link>
+
+                                   <div className="flex gap-6 col-start-4 col-span-full row-start-4">
+                                        {HeroCardTexts.map((card, i) => {
+                                             return <HeroCard key={i} {...card} />
+                                        })}
+                                   </div>
+                              </div>
+                         </section>
+                    </div>
+
+                    <section>
+                         <h2 className="text-main text-6xl p-8 font-bagel font-black underline decoration-sec">
+                              Découvrez mes dernières prestations
+                         </h2>
+
+                         <div>
+                              {PrestationsList.map((Line, i) => {
+                                   return <Prestations key={i} {...Line} />
+                              })}
+                         </div>
+                    </section>
+
+                    <section className="bg-main my-12 pb-6">
+                         <h3 className="text-bg text-6xl p-8 font-bagel font-black underline decoration-sec">
+                              Moi & mon atelier
+                         </h3>
+                         <p className="p-8 w-[80%] text-bg text-2xl">
+                              Je suis un développeur web de 21 ans, passionné d'informatique depuis sa jeunesse (qui
+                              n'est plus toute proche!). Je travaille sur mes machines et celles de mes proches depuis 6
+                              ans maintenant, faisant de la réparation et du montage occasionnel gratuitement pour des
+                              personnes quand j'étais encore en études. J'ai maintenant décidé de sauter le pas et de
+                              lancer mon entreprise ! Je propose donc tous les services (que vous pouvez retrouver dans
+                              la catégorie "services") chez moi ou à domicile! <br /> <br />
+                              La visite à l'atelier se fait uniquement sur rendez-vous via la page rendez-vous ou sur
+                              whatsapp !
+                         </p>
+                         <Link href={"/contact"} className="w-fit">
+                              <p className="border-3 border-border shadow-neo bg-bg text-center p-4 rounded-lg text-main font-bold w-[50%] mx-auto">
+                                   Prendez rendez-vous →
+                              </p>
+                         </Link>
+                    </section>
+                    <Footer />
+               </main>
+          </>
+     )
 }
