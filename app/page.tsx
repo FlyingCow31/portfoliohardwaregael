@@ -3,6 +3,7 @@ import Navbar, { MobileNav } from "./components/Navbar"
 import HeroCard from "./components/Cards"
 import Prestations from "./components/Presta"
 import Footer from "./components/Footer"
+import HeroMainPanel from "./components/HeroPanel"
 
 const HeroCardTexts = [
      {
@@ -43,6 +44,28 @@ const PrestationsList = [
                { src: "logo.png", alt: "Logo" },
           ],
      },
+     {
+          client: "Gaël Tournier",
+          date: "09/09/2026",
+          title: "Config gaming 1440p",
+          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
+          images: [
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+          ],
+     },
+     {
+          client: "Gaël Tournier",
+          date: "09/09/2026",
+          title: "Config gaming 1440p",
+          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
+          images: [
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+               { src: "logo.png", alt: "Logo" },
+          ],
+     },
 ]
 
 export default function Home() {
@@ -51,40 +74,34 @@ export default function Home() {
                <main className="bg-bg min-h-screen">
                     <MobileNav />
                     <Navbar />
-                    <div className="bg-bg p-3 font-">
-                         <section className="relative lg:overflow-hidden rounded-lg bg-brand-base px-10 py-12 lg:h-screen">
-                              <div className="bg-blobs pointer-events-none absolute inset-0" />
-                              <div className="bg-hatch-diagonal pointer-events-none absolute bottom-0 left-0 h-64 w-64" />
 
-                              <div className="relative lg:grid grid-cols-5 lg:grid-rows-[auto_1fr_auto_auto] ">
-                                   <h1 className="font-bagel text-5xl lg:text-7xl col-span-full py-12">
-                                        Réparation, montage et diagnostic <br /> PC portables et fixes.
-                                   </h1>
-                                   <p className="row-start-3 col-span-3 pb-20 text-xl">
-                                        Avec 6 ans d'experience dans le montage, démontage et réparation de PC, je viens
-                                        aujourd'hui à votre secours! Je me déplace chez vous ou vous accueille dans mon
-                                        atelier pour résoudre vos problèmes techniques, vous monter votre configuration
-                                        PC de rêve ou même vous conseiller sur vos composants. Que vous soyez un gamer
-                                        qui recherche la performance avec de l'optimisation, ou un grand-parent voulant
-                                        faire plaisir à votre petit fils (ou petite fille!), je vous accompagne !
-                                   </p>
-                                   <Link href={"/contact"} className="row-start-4 col-start-1 h-fit">
-                                        <p className="border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
-                                             Prendez Rendez-Vous →
-                                        </p>
-                                   </Link>
+                    <HeroMainPanel>
+                         <h1 className="font-bagel text-5xl md:text-7xl col-span-full py-12">
+                              Réparation, montage et diagnostic <br /> PC portables et fixes.
+                         </h1>
+                         <p className="row-start-3 col-span-3 pb-20 text-xl leading-relaxed">
+                              Avec 6 ans d'experience dans le montage, démontage et réparation de PC, je viens
+                              aujourd'hui à votre secours! Je me déplace chez vous ou vous accueille dans mon atelier
+                              pour résoudre vos problèmes techniques, vous monter votre configuration PC de rêve ou même
+                              vous conseiller sur vos composants. Que vous soyez un gamer qui recherche la performance
+                              avec de l'optimisation, ou un grand-parent voulant faire plaisir à votre petit fils (ou
+                              petite fille!), je vous accompagne !
+                         </p>
+                         <Link href={"/contact"} className="row-start-4 col-start-1 h-fit">
+                              <p className="border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
+                                   Prendez Rendez-Vous →
+                              </p>
+                         </Link>
 
-                                   <div className="flex lg:flex-row flex-col gap-6 col-start-4 col-span-full row-start-4 mt-6 lg:mt-0">
-                                        {HeroCardTexts.map((card, i) => {
-                                             return <HeroCard key={i} {...card} />
-                                        })}
-                                   </div>
-                              </div>
-                         </section>
-                    </div>
+                         <div className="flex md:flex-row flex-col gap-6 col-start-4 col-span-full row-start-4 mt-6 lg:mt-0">
+                              {HeroCardTexts.map((card, i) => {
+                                   return <HeroCard key={i} {...card} />
+                              })}
+                         </div>
+                    </HeroMainPanel>
 
                     <section>
-                         <h2 className="text-main text-5xl lg:text-6xl p-8 font-bagel font-black underline decoration-sec">
+                         <h2 className="text-main text-5xl md:text-6xl p-8 font-bagel font-black underline decoration-sec">
                               Découvrez mes dernières prestations
                          </h2>
 

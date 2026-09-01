@@ -5,6 +5,7 @@
      --sec: #5fa8da;
      --bg: #d7e8f4;
      --tint: #0b1c28;
+     --whity: #fafdff;
      --shadow: 4px 6px 0px var(--tint);
 }
 
@@ -13,6 +14,7 @@
      --color-main: var(--main);
      --color-sec: var(--sec);
      --color-tint: var(--tint);
+     --color-whity: var(--whity);
      --color-brand-base: #8fc2e4;
      --color-border: var(--tint);
      --font-bagel: "Bagel Fat One", sans-serif;
