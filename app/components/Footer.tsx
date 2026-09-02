@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export default function Footer() {
      return (
-          <footer className="flex flex-col lg:flex-row gap-6 p-4 items-center">
+          <footer className="flex flex-col lg:flex-row gap-6 p-4 pt-8 items-center">
                <Image src={"/logo.png"} alt="Logo Chez Gaël" width={161} height={32} />
                <Link href={"/mentions"}>
                     <p>Mentions légales</p>

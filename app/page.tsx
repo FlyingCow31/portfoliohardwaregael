@@ -4,6 +4,7 @@ import HeroCard from "./components/Cards"
 import Prestations from "./components/Presta"
 import Footer from "./components/Footer"
 import HeroMainPanel from "./components/HeroPanel"
+import MainTitle from "./components/Text"
 
 const HeroCardTexts = [
      {
@@ -101,9 +102,7 @@ export default function Home() {
                     </HeroMainPanel>
 
                     <section>
-                         <h2 className="text-main text-5xl md:text-6xl p-8 font-bagel font-black underline decoration-sec">
-                              Découvrez mes dernières prestations
-                         </h2>
+                         <MainTitle text="Découvrez mes dernières prestations" />
 
                          <div className="lg:hidden">
                               {PrestationsList.slice(0, 1).map((Line, i) => {
