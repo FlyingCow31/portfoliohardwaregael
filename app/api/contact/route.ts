@@ -29,6 +29,25 @@ const schema = z.object({
      slot: z.string({ message: "Vous devez choisir un horaire!" }).nonempty(),
 })
 
+function escapeHtml(value: string) {
+     return value.replace(/[&<>"']/g, (character) => {
+          switch (character) {
+               case "&":
+                    return "&amp;"
+               case "<":
+                    return "&lt;"
+               case ">":
+                    return "&gt;"
+               case '"':
+                    return "&quot;"
+               case "'":
+                    return "&#39;"
+               default:
+                    return character
+          }
+     })
+}
+
 export async function POST(request: NextRequest) {
      try {
           const body = await request.json()
@@ -43,7 +62,7 @@ export async function POST(request: NextRequest) {
 
           const clientEmail = body.email
 
-          const OrderMail = await transporter.sendMail({
+          await transporter.sendMail({
                from: process.env.PRIV_EMAIL,
                to: process.env.PRIV_EMAIL,
                replyTo: clientEmail,
@@ -58,7 +77,37 @@ export async function POST(request: NextRequest) {
                `,
           })
 
-          const ClientMail = await transporter.sendMail({
+          const clientMailHtml = `
+               <div style="margin:0 auto;max-width:640px;padding:24px;font-family:Arial,sans-serif;color:#111827;line-height:1.6;background-color:#f9fafb;">
+                    <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;">
+                         <h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;font-weight:700;color:#111827;">
+                              ${escapeHtml(verified.nom)}, merci d'avoir pris rendez-vous!
+                         </h1>
+                         <p style="margin:0 0 16px;font-size:16px;">
+                              Ceci est un message automatique pour vous confirmer que votre message a bien été pris en
+                              compte.
+                         </p>
+                         <p style="margin:0 0 16px;font-size:16px;">
+                              Vous avez rendez-vous le <strong>${escapeHtml(String(verified.day))} ${escapeHtml(verified.month)} à ${escapeHtml(verified.slot)}h</strong>
+                              pour un(e) ${escapeHtml(verified.kind)}.
+                         </p>
+                         <p style="margin:0 0 16px;font-size:16px;white-space:pre-line;">
+                              Voila les détails que vous m'avez transmis: "${escapeHtml(verified.message)}"
+                         </p>
+                         <p style="margin:0 0 16px;font-size:16px;">
+                              Si vous avez une question, vous pouvez m'envoyer un message sur whatsapp uniquement au +33 6 58 53 82 54
+                              ou par mail à contact@gaeltournier.dev.
+                         </p>
+                         <p style="margin:0;font-size:16px;">Très belle journée!<br />Gaël.</p>
+                         <p style="margin:16px 0 0;font-size:14px;color:#6b7280;font-style:italic;">
+                              Si vous ne recevez pas de mail supplémentaire depuis un email se terminant en @gaeltournier.dev,
+                              considérez que votre rendez-vous est confirmé!
+                         </p>
+                    </div>
+               </div>
+          `
+
+          await transporter.sendMail({
                from: process.env.PRIV_EMAIL,
                to: clientEmail,
                subject: `Chez Gaël - Votre Rendez-vous le ${verified.day} ${verified.month} à ${verified.slot}`,
@@ -79,6 +128,7 @@ export async function POST(request: NextRequest) {
                Très belle journée! 
                Gaël. 
                `,
+               html: clientMailHtml,
           })
 
           return NextResponse.json({ ok: true, data: parsed })

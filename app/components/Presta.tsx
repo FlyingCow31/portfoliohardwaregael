@@ -1,4 +1,5 @@
 import Image from "next/image"
+import React from "react"
 
 type Prestas = {
      client?: string
@@ -13,7 +14,7 @@ export default function Prestations({ client = "Particulier", date, title, desc,
           <>
                <hr className=" w-[90%] lg:w-[80%] mx-auto border-2 border-main" />
                <div className="flex lg:flex-row flex-col p-12 w-[90%] md:w-full lg:w-[80%] mx-auto lg:gap-6">
-                    <div className="flex flex-col text-center md:text-nowrap">
+                    <div className="flex flex-col text-center lg:text-left lg:w-2/5 lg:shrink-0">
                          <p className="text-xl opacity-70 text-tint">
                               Client: <span className="italic">{client}</span>
                          </p>
@@ -35,16 +36,17 @@ export default function Prestations({ client = "Particulier", date, title, desc,
                               />
                          ))}
                     </div>
-                    <div className="hidden lg:flex flex-row gap-6 ml-auto mt-0">
+                    <div className="hidden md:hidden lg:flex lg:flex-1 flex-row gap-6 ml-auto mt-0">
                          {images.map(({ src, alt }, i) => (
-                              <Image
-                                   key={i}
-                                   src={`/exemples/${src}`}
-                                   alt={alt}
-                                   height={250}
-                                   width={250}
-                                   className="bg-gray-500 borderimage"
-                              />
+                              <div key={i} className="relative aspect-square min-w-0 flex-1">
+                                   <Image
+                                        src={`/exemples/${src}`}
+                                        alt={alt}
+                                        fill
+                                        sizes="(max-width: 1024px) 45vw, 20vw"
+                                        className="bg-gray-500 borderimage object-cover"
+                                   />
+                              </div>
                          ))}
                     </div>
                </div>

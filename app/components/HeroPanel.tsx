@@ -1,6 +1,12 @@
 import type { ReactNode } from "react"
 
-export default function HeroMainPanel({ children, height = "lg:h-screen" }: { children: ReactNode; height?: string }) {
+export default function HeroMainPanel({
+     children,
+     height = "lg:min-h-screen",
+}: {
+     children: ReactNode
+     height?: string
+}) {
      return (
           <div className="bg-bg p-3 font-dm">
                <section className={`relative lg:overflow-hidden rounded-lg bg-brand-base px-10 py-12 ${height}`}>

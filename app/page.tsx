@@ -5,6 +5,19 @@ import Prestations from "./components/Presta"
 import Footer from "./components/Footer"
 import HeroMainPanel from "./components/HeroPanel"
 import MainTitle from "./components/Text"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+     title: "Réparation PC à Colomiers et Toulouse",
+     description:
+          "Chez Gaël, réparation et montage de vos ordinateurs à Colomiers : diagnostic, remplacement pièces, nettoyage, assistance à distance. Atelier sur rendez-vous.",
+     openGraph: {
+          title: "Chez Gaël - Réparation et montage PC à Colomiers",
+          description: "Diagnostic, montage, réparation et assistance informatique près de Toulouse.",
+          images: ["/og-home.png"],
+     },
+     alternates: { canonical: "/" },
+}
 
 const HeroCardTexts = [
      {
@@ -36,35 +49,24 @@ const HeroCardTexts = [
 const PrestationsList = [
      {
           client: "Gaël Tournier",
-          date: "09/09/2026",
+          date: "02/09/2026",
           title: "Config gaming 1440p",
-          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
+          desc: "Montage d'une Sapphire RX 5700 XT avec un Ryzen 7 3700X dans un boitier finission bois Lian-Li pour du gaming 1440p, à Colomiers.",
           images: [
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
+               { src: "pclianliinterieur.jpg", alt: "Intérieur du PC Lian-li avec vue sur les composants" },
+               { src: "pclianlicablemanagement.jpg", alt: "Câble management de l'arrière du PC Lian-Li" },
+               { src: "lianlitower.jpg", alt: "Photo du boitier Lian-Li" },
           ],
      },
      {
           client: "Gaël Tournier",
           date: "09/09/2026",
-          title: "Config gaming 1440p",
-          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
+          title: "Config Aquarium",
+          desc: "Boitier aquarium sans câble management, la personne aimant voir les câbles.",
           images: [
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
-          ],
-     },
-     {
-          client: "Gaël Tournier",
-          date: "09/09/2026",
-          title: "Config gaming 1440p",
-          desc: "Ryzen 7, RTX 4070 Super, câblage sur mesure et gestion du flux d'air.",
-          images: [
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
-               { src: "logo.png", alt: "Logo" },
+               { src: "aquapcfront.jpg", alt: "Devant du PC aquarium" },
+               { src: "aquapcside.jpg", alt: "Coté du PC aquarium" },
+               { src: "aquapcdetail.jpg", alt: "Détails de la carte mère du PC aquarium" },
           ],
      },
 ]
@@ -117,9 +119,9 @@ export default function Home() {
                     </section>
 
                     <section className="bg-main my-12 pb-6">
-                         <h3 className="text-bg text-6xl p-8 font-bagel font-black underline decoration-sec">
+                         <h2 className="text-bg text-6xl p-8 font-bagel font-black underline decoration-sec">
                               Moi & mon atelier
-                         </h3>
+                         </h2>
                          <p className="p-8 w-full lg:w-[80%] text-bg text-2xl">
                               Je suis un développeur web de 21 ans, passionné d'informatique depuis sa jeunesse (qui
                               n'est plus toute proche!). Je travaille sur mes machines et celles de mes proches depuis 6

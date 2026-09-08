@@ -4,12 +4,20 @@ import Navbar, { MobileNav } from "../components/Navbar"
 import MainTitle from "../components/Text"
 import MainPrice, { SecPrice } from "../components/Prices"
 import Footer from "../components/Footer"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+     title: "Mes services de réparation informatique",
+     description:
+          "Diagnostic, Montage, réparation matérielle, remplacement disque/RAM, nettoyage, désinfection virus. Intervention à Colomiers et déplacement sur Toulouse.",
+     alternates: { canonical: "/services" },
+}
 
 const servicesMain = [
      {
           title: "Montage",
           price: "À partir de 50€",
-          text: "Vous avez un nouveau PC ? Montage complet avec cable management et optimisation. 2h passé à l'atelier ou à domicile, plusieurs années sans intervention. Explications gratuites pour connaitre votre machine. Inclus dans la prestation de A à Z.",
+          text: "Vous avez un nouveau PC ? Montage complet avec cable management et optimisation. 2h passées à l'atelier de Colomiers ou à domicile sur Toulouse et ses environs, plusieurs années sans intervention. Explications gratuites pour connaitre votre machine. Inclus dans la prestation de A à Z.",
           line: [
                "Câble management professionnel",
                "Montage design",
@@ -20,7 +28,7 @@ const servicesMain = [
      {
           title: "Réparation",
           price: "À partir de 29€",
-          text: "Écran noir, surchauffe, lenteur: Tout y passe ! J'effectue les réparations superficielles qui ne nécessitent pas d'intervention de soudure. Pc fixes et portables ! ",
+          text: "Écran noir, surchauffe, lenteur: Tout y passe ! J'effectue les réparations superficielles qui ne nécessitent pas d'intervention de soudure. Pc fixes et portables ! J'interviens sur Colomiers et à Toulouse et environs. ",
           line: [
                "Devis avant intervention",
                "Remplacement de composants",
@@ -30,11 +38,11 @@ const servicesMain = [
      },
      {
           title: "Diagnostic",
-          price: " 29€/h, déduit si réparation.",
-          text: "Votre petit-fils n'arrive pas à réparer votre PC ? J'utilise des tests méthodiques pour diagnostiquer vos appareils! Diagnostic en distanciel possible.",
+          price: "À partir de 29€ par heure, déduit si réparation.",
+          text: "Votre petit-fils n'arrive pas à réparer votre PC ? J'utilise des tests méthodiques pour diagnostiquer vos appareils! Diagnostic en distanciel possible, diagnostic physique à l'atelier à Colomiers ou à domicile à Toulouse et dans ses environs.",
           line: [
                "Tests mémoire, CPU, GPU",
-               "Analyse des logs et des events",
+               "Analyse des logs et des événements",
                "Diagnostic thermique",
                "Compte rendu total et devis complet",
           ],
@@ -47,9 +55,9 @@ const servicesSec = [
           text: "Ajout de ram, migration vers un SSD NVME M2, nouvelle carte graphique...",
      },
      {
-          title: "Recupération de Données",
+          title: "Récupération de données",
           price: "À partir de 49€ | ~1h",
-          text: "Niveau 1 seulement, votre clé USB apparait quelques secondes mais re-disparait. Les niveaux suivant devront aller au centre de récupération de données.",
+          text: "Niveau 1 seulement, votre clé USB apparait quelques secondes mais redisparaît. Les niveaux suivant devront aller au centre de récupération de données.",
      },
      {
           title: "Optimisation",
@@ -58,7 +66,7 @@ const servicesSec = [
      },
      {
           title: "Assistance à distance",
-          price: "29€/30 min",
+          price: "À partir de 29€ la demie-heure",
           text: "Pour les services éligibles au distanciel, les prix sont fixes.",
      },
      {
@@ -80,19 +88,54 @@ const servicesSec = [
      },
      {
           title: "Nettoyage",
-          text: "Nettoyage en détail et remplacement de la pâte thermique. J'ouvre votre PC et lui refait une beautée!",
+          text: "Nettoyage en détail et remplacement de la pâte thermique. J'ouvre votre PC et lui refait une beauté! Disponible à l'atelier à Colomiers ou à domicile dans Toulouse ou ses environs.",
           price: "À partir de 29€ (fixes) | 39€ (portables)",
      },
 ]
 
 export default function Page() {
+     const serviceJsonLd = {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Réparation informatique",
+          provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
+          areaServed: ["Colomiers", "Toulouse"],
+     }
+     const servicesJsonLd = [
+          {
+               "@context": "https://schema.org",
+               "@type": "Service",
+               serviceType: "Réparation informatique",
+               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
+               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
+               areaServed: ["Colomiers", "Toulouse"],
+          },
+          {
+               "@context": "https://schema.org",
+               "@type": "Service",
+               serviceType: "Réparation informatique",
+               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
+               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
+               areaServed: ["Colomiers", "Toulouse"],
+          },
+          {
+               "@context": "https://schema.org",
+               "@type": "Service",
+               serviceType: "Réparation informatique",
+               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
+               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
+               areaServed: ["Colomiers", "Toulouse"],
+          },
+     ]
      return (
           <>
                <main className="bg-bg min-h-screen pb-400">
                     <MobileNav />
                     <Navbar />
                     <HeroMainPanel height="lg:h-1/2">
-                         <h1 className="font-bagel text-5xl md:text-7xl col-span-full py-12">Mes Services</h1>
+                         <h1 className="font-bagel text-5xl md:text-7xl col-span-full py-12">
+                              Mes Services sur Colomiers, Toulouse et alentours.
+                         </h1>
                          <p className="row-start-3 col-span-3 pb-20 text-xl leading-relaxed">
                               Mes trois grandes prestations phares: montage, nettoyage et réparation. Retrouvez
                               également mes plus petits services comme de l'accompagnement, des upgrades ou des services

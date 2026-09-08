@@ -14,7 +14,7 @@ export default function Navbar() {
                          <Image src={"/logo.png"} alt="Logo Chez Gaël" width={161} height={32} />
                     </Link>
 
-                    <Link href={"/services"} className="ml-auto mr-20">
+                    <Link href={"/services"} className="ml-auto mr-10">
                          <p
                               className={` ${pathname == "/services" ? "bg-sec" : "bg-transparent"} px-6 py-2 border-3 rounded-lg shadow-neo`}
                          >
@@ -83,7 +83,7 @@ export function MobileNav() {
                                    </p>
                               </Link>
 
-                              <Link href={"/contact"}>
+                              <Link href={"/contact"} className="mt-auto mb-20">
                                    <p className="bg-sec px-6 py-2 text-xl font-dm rounded-lg border-3 border-border shadow-neo">
                                         Rendez-vous →
                                    </p>

@@ -6,7 +6,14 @@ import Navbar, { MobileNav } from "../components/Navbar"
 import { MoveUpRight } from "lucide-react"
 import Link from "next/link"
 import Footer from "../components/Footer"
+import { Metadata } from "next"
 
+export const metadata: Metadata = {
+     title: "Contact ",
+     description:
+          "Contactez moi pour obtenir un devis gratuit pour votre montage, réparation, nettoyage de PC, solutions self-host ou autres services !",
+     alternates: { canonical: "/contact" },
+}
 type ContactCard = {
      label: string
      value: string
