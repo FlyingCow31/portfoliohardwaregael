@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Bagel_Fat_One, DM_Sans } from "next/font/google"
 import "./globals.css"
 import { BusinessJsonLd } from "./components/serviceJsonLd"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const bagel = Bagel_Fat_One({
      weight: "400",
@@ -34,6 +36,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
      return (
           <html lang="fr" className={`${bagel.variable} ${dm_sans.variable} font-dm h-full antialiased`}>
                <body>
+                    <SpeedInsights />
+                    <Analytics />
                     <BusinessJsonLd />
                     {children}
                </body>
