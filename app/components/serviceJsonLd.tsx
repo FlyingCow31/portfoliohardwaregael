@@ -1,5 +1,5 @@
 // components/BusinessJsonLd.tsx
-const SITE_URL = "https://hardware.gaeltournier.dev"
+const SITE_URL = "https://chezgael.fr"
 
 const jsonLd = {
      "@context": "https://schema.org",

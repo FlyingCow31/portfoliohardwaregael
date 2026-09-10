@@ -17,7 +17,7 @@ const dm_sans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-     metadataBase: new URL("https://hardware.gaeltournier.dev"),
+     metadataBase: new URL("https://chezgael.fr"),
      title: {
           default: "Chez Gaël - Réparation PC à Colomiers, Toulouse",
           template: "%s | Chez Gaël",
