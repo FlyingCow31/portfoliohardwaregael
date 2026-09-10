@@ -51,6 +51,16 @@ function escapeHtml(value: string) {
 export async function POST(request: NextRequest) {
      try {
           const body = await request.json()
+          if (body.website != null) {
+               return NextResponse.json({ ok: true })
+          }
+
+          const timeFillingForm = Date.now() - body.formLoadedAt
+
+          if (!body.formLoadedAt || timeFillingForm < 10000) {
+               return NextResponse.json({ error: "Formulaire Invalide." }, { status: 400 })
+          }
+
           const parsed = schema.safeParse(body)
           await transporter.verify()
 
@@ -77,34 +87,59 @@ export async function POST(request: NextRequest) {
                `,
           })
 
+          // Formatting made with AI
           const clientMailHtml = `
-               <div style="margin:0 auto;max-width:640px;padding:24px;font-family:Arial,sans-serif;color:#111827;line-height:1.6;background-color:#f9fafb;">
-                    <div style="background-color:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;">
-                         <h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;font-weight:700;color:#111827;">
-                              ${escapeHtml(verified.nom)}, merci d'avoir pris rendez-vous!
-                         </h1>
-                         <p style="margin:0 0 16px;font-size:16px;">
-                              Ceci est un message automatique pour vous confirmer que votre message a bien été pris en
-                              compte.
-                         </p>
-                         <p style="margin:0 0 16px;font-size:16px;">
-                              Vous avez rendez-vous le <strong>${escapeHtml(String(verified.day))} ${escapeHtml(verified.month)} à ${escapeHtml(verified.slot)}h</strong>
-                              pour un(e) ${escapeHtml(verified.kind)}.
-                         </p>
-                         <p style="margin:0 0 16px;font-size:16px;white-space:pre-line;">
-                              Voila les détails que vous m'avez transmis: "${escapeHtml(verified.message)}"
-                         </p>
-                         <p style="margin:0 0 16px;font-size:16px;">
-                              Si vous avez une question, vous pouvez m'envoyer un message sur whatsapp uniquement au +33 6 58 53 82 54
-                              ou par mail à contact@gaeltournier.dev.
-                         </p>
-                         <p style="margin:0;font-size:16px;">Très belle journée!<br />Gaël.</p>
-                         <p style="margin:16px 0 0;font-size:14px;color:#6b7280;font-style:italic;">
-                              Si vous ne recevez pas de mail supplémentaire depuis un email se terminant en @gaeltournier.dev,
-                              considérez que votre rendez-vous est confirmé!
-                         </p>
-                    </div>
-               </div>
+               <div
+     style="
+          margin: 0 auto;
+          max-width: 640px;
+          padding: 24px;
+          font-family: Arial, sans-serif;
+          color: #1b4967;
+          line-height: 1.6;
+          background-color: #d7e8f4;
+     "
+>
+     <div
+          style="
+               background-color: #ffffff;
+               border: 3px solid #1b4967;
+               border-radius: 16px;
+               padding: 24px;
+               box-shadow: 4px 6px 0px #1b4967;
+          "
+     >
+          <h1 style="margin: 0 0 16px; font-size: 24px; line-height: 1.2; font-weight: 700; color: #1b4967">
+               ${escapeHtml(verified.nom)}, merci d'avoir pris rendez-vous!
+          </h1>
+          <p style="margin: 0 0 16px; font-size: 16px">
+               Ceci est un message automatique pour vous confirmer que votre message a bien été pris en compte.
+          </p>
+          <p style="margin: 0 0 16px; font-size: 16px">
+               Vous avez rendez-vous le
+               <strong>
+                    ${escapeHtml(String(verified.day))} ${escapeHtml(verified.month)} à ${escapeHtml(verified.slot)}h
+               </strong>
+               pour un(e) ${escapeHtml(verified.kind)}.
+          </p>
+          <p style="margin: 0 0 16px; font-size: 16px; white-space: pre-line">
+               Voila les détails que vous m'avez transmis: "${escapeHtml(verified.message)}"
+          </p>
+          <p style="margin: 0 0 16px; font-size: 16px">
+               Si vous avez une question, vous pouvez m'envoyer un message sur whatsapp uniquement au +33 6 58 53 82 54
+               ou par mail à contact@gaeltournier.dev.
+          </p>
+          <p style="margin: 0; font-size: 16px">
+               Très belle journée!
+               <br />
+               Gaël.
+          </p>
+          <p style="margin: 16px 0 0; font-size: 14px; color: #6b7280; font-style: italic">
+               Si vous ne recevez pas de mail supplémentaire depuis un email se terminant en @gaeltournier.dev,
+               considérez que votre rendez-vous est confirmé!
+          </p>
+     </div>
+</div>
           `
 
           await transporter.sendMail({

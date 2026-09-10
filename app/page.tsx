@@ -25,8 +25,8 @@ const HeroCardTexts = [
           description:
                "Je me déplace sur Colomiers gratuitement, et sur Toulouse et villes alentours pour 1€/km depuis mon atelier. Vous pouvez également venir à mon atelier gratuitement!",
           cta: (
-               <Link href={"/"} className="w-fit h-fit self-center">
-                    <p className="bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
+               <Link href={"/contact"} className="w-fit h-fit self-center">
+                    <p className="lightbgtransition bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
                          + d'Infos
                     </p>
                </Link>
@@ -37,8 +37,8 @@ const HeroCardTexts = [
           description:
                "Je propose des services de A à Z: commande et recherche des pièces, montage et optimisation. Explications gratuites!",
           cta: (
-               <Link href={"/"} className="w-fit h-fit self-center mt-auto">
-                    <p className="bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
+               <Link href={"/services"} className="w-fit h-fit self-center mt-auto">
+                    <p className="lightbgtransition bg-sec text-center h-fit w-fit mx-auto py-1 px-10 rounded-lg font-bold text-xl border-3 border-border shadow-neo">
                          + d'Infos
                     </p>
                </Link>
@@ -91,7 +91,7 @@ export default function Home() {
                               petite fille!), je vous accompagne !
                          </p>
                          <Link href={"/contact"} className="row-start-4 col-start-1 h-fit">
-                              <p className="border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
+                              <p className="darkbgtransition border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
                                    Prendez Rendez-Vous →
                               </p>
                          </Link>
@@ -133,7 +133,7 @@ export default function Home() {
                               whatsapp !
                          </p>
                          <Link href={"/contact"} className="w-fit">
-                              <p className="border-3 border-border shadow-neo bg-bg text-center p-4 rounded-lg text-main font-bold w-[70%] lg:w-[50%] mx-auto">
+                              <p className="xlightbgtransition border-3 border-border shadow-neo bg-bg text-center p-4 rounded-lg text-main font-bold w-[70%] lg:w-[50%] mx-auto">
                                    Prendez rendez-vous →
                               </p>
                          </Link>

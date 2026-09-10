@@ -16,7 +16,7 @@ export default function MainPrice({ title, text, price, line }: Services) {
                          <h3 className="font-bagel text-4xl lg:text-6xl text-main">{title}</h3>
                          <p className="font-bold text-2xl my-6">{price}</p>
                          <Link href={"/contact"} className="inline-flex w-fit self-start">
-                              <span className="px-12 py-2 border-3 shadow-neo text-2xl lg:text-3xl text-bg w-fit bg-main rounded-lg border-tint">
+                              <span className="darkbgtransition px-12 py-2 border-3 shadow-neo text-2xl lg:text-3xl text-bg w-fit bg-main rounded-lg border-tint">
                                    Réserver
                               </span>
                          </Link>

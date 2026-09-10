@@ -18,14 +18,19 @@ type ContactCard = {
      label: string
      value: string
      icon?: ReactNode
-     link?: string
+     link: string
 }
 
 const icon = <MoveUpRight className="ml-auto" size={40} />
 const cardsContact: ContactCard[] = [
-     { label: "Téléphone & WhatsApp", value: "06 12 34 56 78", icon, link: "/" },
-     { label: "E-mail", value: "contact@chezgael.fr", icon, link: "/" },
-     { label: "Atelier, sur rendez-vous", value: "Colomiers (31)" },
+     { label: "Téléphone & WhatsApp", value: "06 12 34 56 78", icon, link: "https://wa.me/33658538254" },
+     { label: "E-mail", value: "contact@chezgael.fr", icon, link: "mailto:contact@gaeltournier.dev" },
+     {
+          label: "Atelier, sur rendez-vous",
+          value: "Colomiers (31)",
+          icon,
+          link: "https://maps.app.goo.gl/Q2AaPXk87mnuboVa9",
+     },
 ]
 
 export default function ContactPage() {
@@ -43,22 +48,21 @@ export default function ContactPage() {
                               Je réponds sous 24 h, et l&apos;atelier de Colomiers se visite uniquement sur rendez-vous.
                          </p>
                          <div className="row-start-4 col-start-1 col-span-full flex mt-12 lg:justify-between lg:flex-row flex-col gap-6 lg:gap-0">
-                              {cardsContact.map((card, i) =>
-                                   card.link ? (
-                                        <Link href={card.link} key={i} className="lg:w-[30%]">
-                                             <div className="bg-bg shadow-neo border-3 rounded-lg p-6 ">
-                                                  <p className="font-bagel text-2xl">{card.label}</p>
-                                                  <p className="text-xl">{card.value}</p>
-                                                  {card.icon}
-                                             </div>
-                                        </Link>
-                                   ) : (
-                                        <div key={i} className="bg-bg shadow-neo border-3 rounded-lg p-6 lg:w-[30%]">
+                              {cardsContact.map((card, i) => (
+                                   <Link
+                                        href={card.link}
+                                        key={i}
+                                        className="lg:w-[30%]"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                   >
+                                        <div className="bg-bg shadow-neo border-3 rounded-lg p-6 xlightbgtransition">
                                              <p className="font-bagel text-2xl">{card.label}</p>
                                              <p className="text-xl">{card.value}</p>
+                                             {card.icon}
                                         </div>
-                                   ),
-                              )}
+                                   </Link>
+                              ))}
                          </div>
                     </HeroMainPanel>
 

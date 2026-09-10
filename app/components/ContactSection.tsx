@@ -38,7 +38,7 @@ const MONTH_NAMES = [
 ]
 
 function chipClasses(active: boolean) {
-     return active ? "border-tint bg-main text-bg" : "border-tint bg-transparent text-tint "
+     return active ? "border-tint bg-main text-bg" : "border-tint bg-transparent text-tint hover:bg-darker "
 }
 
 export default function ContactSection() {
@@ -53,6 +53,8 @@ export default function ContactSection() {
           }
 
           const payload = {
+               formLoadedAt,
+               website,
                nom,
                email,
                phone,
@@ -100,6 +102,8 @@ export default function ContactSection() {
           }
      }
 
+     const [formLoadedAt] = useState(() => Date.now())
+     const [website, setWebsite] = useState<string | null>(null)
      const [nom, setNom] = useState("")
      const [email, setEmail] = useState("")
      const [phone, setPhone] = useState("")
@@ -152,16 +156,21 @@ export default function ContactSection() {
 
      return (
           <section className="grid grid-cols-1 gap-6 px-4 py-8 sm:px-8 lg:grid-cols-2">
-               <form
-                    onSubmit={HandleSubmit}
-                    className="flex flex-col rounded-[10px] border-3 border-tint bg-bg shadow-[4px_6px_0px_#0b1c28]"
-               >
-                    <h2 className="m-0 rounded-t-[7px] border-b-3 border-tint bg-sec p-3 text-center font-bagel text-[28px] font-normal">
+               <form onSubmit={HandleSubmit} className="flex flex-col rounded-xl border-3 border-tint bg-bg shadow-neo">
+                    <h2 className="m-0 rounded-t-lg border-b-3 border-tint bg-sec p-3 text-center font-bagel text-3xl font-normal">
                          Écrivez-moi
                     </h2>
                     <div className="flex flex-col gap-4 p-5">
-                         <label className="flex flex-col gap-1.5 text-[17px] font-bold">
-                              Nom
+                         <input
+                              type="text"
+                              onChange={(e) => setWebsite(e.target.value)}
+                              name="website"
+                              tabIndex={-1}
+                              autoComplete="off"
+                              style={{ position: "absolute", left: "-9999px" }}
+                         />
+                         <label className="flex flex-col gap-1 text-lg font-bold">
+                              Nom et Prénom
                               <input
                                    value={nom}
                                    onChange={(e) => setNom(e.target.value)}
@@ -171,7 +180,7 @@ export default function ContactSection() {
                                    type="text"
                               />
                          </label>
-                         <label className="flex flex-col gap-1.5 text-[17px] font-bold">
+                         <label className="flex flex-col gap-1 text-lg font-bold">
                               Email
                               <input
                                    value={email}
@@ -182,7 +191,7 @@ export default function ContactSection() {
                                    type="text"
                               />
                          </label>
-                         <label className="flex flex-col gap-1.5 text-[17px] font-bold">
+                         <label className="flex flex-col gap-1 text-lg font-bold">
                               Téléphone
                               <input
                                    value={phone}
@@ -193,9 +202,9 @@ export default function ContactSection() {
                               />
                          </label>
 
-                         <div className="flex flex-col gap-2.5">
-                              <span className="text-[17px] font-bold">Ma demande</span>
-                              <div className="flex flex-wrap gap-2.5">
+                         <div className="flex flex-col gap-2">
+                              <span className="text-lg font-bold">Ma demande</span>
+                              <div className="flex flex-wrap gap-3">
                                    {KIND_OPTIONS.map((k) => (
                                         <button
                                              key={k}
@@ -211,9 +220,9 @@ export default function ContactSection() {
                               </div>
                          </div>
 
-                         <div className="flex flex-col gap-2.5">
-                              <span className="text-[17px] font-bold">Lieu</span>
-                              <div className="flex flex-wrap gap-2.5">
+                         <div className="flex flex-col gap-2">
+                              <span className="text-lg font-bold">Lieu</span>
+                              <div className="flex flex-wrap gap-2">
                                    {PLACE_OPTIONS.map((p) => (
                                         <button
                                              key={p}
@@ -229,7 +238,7 @@ export default function ContactSection() {
                               </div>
                          </div>
 
-                         <label className="flex flex-col gap-1.5 text-[17px] font-bold">
+                         <label className="flex flex-col gap-1 text-lg font-bold">
                               Message
                               <textarea
                                    value={message}
@@ -237,11 +246,11 @@ export default function ContactSection() {
                                    rows={5}
                                    required
                                    placeholder="Marque et modèle, symptômes, usage souhaité, budget… Adresse si besoin"
-                                   className="resize-y rounded-lg border-3 border-tint bg-whity p-3 text-[17px] leading-relaxed outline-none "
+                                   className="resize-y rounded-lg border-3 border-tint bg-whity p-3 text-lg leading-relaxed outline-none "
                               />
                          </label>
 
-                         <div className="rounded-lg border-3 border-tint bg-panel p-3.5 text-[17px] leading-relaxed">
+                         <div className="rounded-lg border-3 border-tint bg-panel p-3.5 text-lg leading-relaxed">
                               {slotSummary}
                          </div>
 
@@ -250,7 +259,7 @@ export default function ContactSection() {
                               type="submit"
                               className={`w-fit cursor-pointer rounded-lg border-3 border-tint ${sent ? "bg-green-700" : "bg-main"} px-6 py-4 text-lg font-bold text-bg shadow-neo hover:translate-x-1 hover:translate-y-1.5 hover:shadow-none`}
                          >
-                              {sent ? "Demande envoyée ✓" : "Envoyer la demande"}
+                              {sent ? "Demande envoyée ✓" : "Prendre rendez-vous"}
                          </button>
                     </div>
                </form>
@@ -258,7 +267,7 @@ export default function ContactSection() {
                <div
                     ref={calendarRef}
                     id="calendardiv"
-                    className={`rounded-[10px] border-3 border-tint shadow-[4px_6px_0px_#0b1c28] ${
+                    className={`rounded-xl border-3 border-tint shadow-neo ${
                          error?.endsWith("jour!") ? "bg-red-100" : "bg-bg"
                     }`}
                >
@@ -274,7 +283,7 @@ export default function ContactSection() {
                                              setMonthOffset((v) => v - 1)
                                              setDay(null)
                                         }}
-                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border-3 border-tint bg-sec text-lg font-bold shadow-[4px_6px_0px_#0b1c28] transition-transform duration-150 ease-out hover:translate-x-1 hover:translate-y-1.5 hover:shadow-none"
+                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border-3 border-tint bg-sec text-lg font-bold shadow-neo lightbgtransition"
                                    >
                                         ‹
                                    </button>
@@ -283,22 +292,22 @@ export default function ContactSection() {
                                              setMonthOffset((v) => v + 1)
                                              setDay(null)
                                         }}
-                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border-3 border-tint bg-sec text-lg font-bold shadow-[4px_6px_0px_#0b1c28] transition-transform duration-150 ease-out hover:translate-x-1 hover:translate-y-1.5 hover:shadow-none"
+                                        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg border-3 border-tint bg-sec text-lg font-bold shadow-neo lightbgtransition"
                                    >
                                         ›
                                    </button>
                               </div>
                          </div>
 
-                         <div className="my-5 grid grid-cols-7 gap-1.5">
+                         <div className="my-5 grid grid-cols-7 gap-1">
                               {WEEKDAYS.map((w, i) => (
-                                   <div key={i} className="text-center text-[15px] font-bold text-main">
+                                   <div key={i} className="text-center text-md font-bold text-main">
                                         {w}
                                    </div>
                               ))}
                          </div>
 
-                         <div className="grid grid-cols-7 gap-1.5">
+                         <div className="grid grid-cols-7 gap-1">
                               {month.cells.map((dn, i) => {
                                    if (dn === null) {
                                         return <div key={i} className="aspect-square min-h-11" />
@@ -316,10 +325,10 @@ export default function ContactSection() {
                                                   weekend
                                                        ? active
                                                             ? "cursor-pointer border-tint bg-main text-bg "
-                                                            : "cursor-pointer border-tint bg-red-200 text-tint shadow-none"
+                                                            : "cursor-pointer border-tint bg-red-200 text-tint shadow-none hover:bg-red-300"
                                                        : active
                                                          ? "cursor-pointer border-tint bg-main text-bg "
-                                                         : "cursor-pointer border-tint bg-whity text-tint shadow-none"
+                                                         : "cursor-pointer border-tint bg-whity text-tint shadow-none hover:bg-darker"
                                              }`}
                                         >
                                              {dn}
@@ -328,8 +337,8 @@ export default function ContactSection() {
                               })}
                          </div>
 
-                         <div className="mt-6 text-[17px] font-bold">Créneaux disponibles</div>
-                         <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+                         <div className="mt-6 text-lg font-bold">Créneaux disponibles</div>
+                         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                               {SLOT_TIMES.map((s) => {
                                    const active = slot === s
                                    return (
@@ -340,9 +349,7 @@ export default function ContactSection() {
                                                   setError(null)
                                              }}
                                              className={`cursor-pointer rounded-lg border-3 border-tint px-1.5 py-3 text-base font-bold transition-transform duration-150 ease-out ${
-                                                  active
-                                                       ? "bg-sec text-tint shadow-[4px_6px_0px_#0b1c28]"
-                                                       : "bg-whity text-tint shadow-none"
+                                                  active ? "bg-sec text-tint" : "bg-whity text-tint hover:bg-darker"
                                              }`}
                                         >
                                              {s}
@@ -351,7 +358,7 @@ export default function ContactSection() {
                               })}
                          </div>
 
-                         <p className="mt-6 text-[17px] leading-relaxed text-main">
+                         <p className="mt-6 text-lg leading-relaxed text-main">
                               Du lundi au vendredi, 9 h – 18 h. Atelier à Colomiers, déplacement gratuit sur la commune
                               et 1 €/km sur Toulouse et alentours.
                          </p>

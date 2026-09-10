@@ -94,42 +94,9 @@ const servicesSec = [
 ]
 
 export default function Page() {
-     const serviceJsonLd = {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Réparation informatique",
-          provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
-          areaServed: ["Colomiers", "Toulouse"],
-     }
-     const servicesJsonLd = [
-          {
-               "@context": "https://schema.org",
-               "@type": "Service",
-               serviceType: "Réparation informatique",
-               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
-               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
-               areaServed: ["Colomiers", "Toulouse"],
-          },
-          {
-               "@context": "https://schema.org",
-               "@type": "Service",
-               serviceType: "Réparation informatique",
-               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
-               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
-               areaServed: ["Colomiers", "Toulouse"],
-          },
-          {
-               "@context": "https://schema.org",
-               "@type": "Service",
-               serviceType: "Réparation informatique",
-               provider: { "@type": "LocalBusiness", name: "Chez Gaël" },
-               offers: { "@type": "Offer", price: "29", priceCurrency: "EUR" },
-               areaServed: ["Colomiers", "Toulouse"],
-          },
-     ]
      return (
           <>
-               <main className="bg-bg min-h-screen pb-400">
+               <main className="bg-bg min-h-screen">
                     <MobileNav />
                     <Navbar />
                     <HeroMainPanel height="lg:h-1/2">
@@ -148,7 +115,7 @@ export default function Page() {
                               </span>
                          </p>
                          <Link href={"/contact"} className="row-start-4 col-start-1 h-fit">
-                              <p className="border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
+                              <p className="darkbgtransition border-3 border-border shadow-neo bg-main text-center p-4 rounded-lg text-bg font-bold h-fit">
                                    Prendez Rendez-Vous →
                               </p>
                          </Link>

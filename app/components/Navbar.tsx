@@ -16,21 +16,21 @@ export default function Navbar() {
 
                     <Link href={"/services"} className="ml-auto mr-10">
                          <p
-                              className={` ${pathname == "/services" ? "bg-sec" : "bg-transparent"} px-6 py-2 border-3 rounded-lg shadow-neo`}
+                              className={` ${pathname == "/services" ? "bg-sec" : "bg-transparent xlightbgtransition"} px-6 py-2 border-3 rounded-lg shadow-neo`}
                          >
                               Services
                          </p>
                     </Link>
                     <Link href={"/assistance"} className="mr-20">
                          <p
-                              className={` ${pathname == "/assistance" ? "bg-sec" : "bg-transparent"} px-6 py-2 border-3 rounded-lg shadow-neo`}
+                              className={` ${pathname == "/assistance" ? "bg-sec" : "bg-transparent xlightbgtransition"} px-6 py-2 border-3 rounded-lg shadow-neo`}
                          >
                               Assistance
                          </p>
                     </Link>
 
                     <Link href={"/contact"}>
-                         <p className="bg-sec px-6 py-2 text-xl font-dm rounded-lg border-3 border-border shadow-neo">
+                         <p className="bg-sec px-6 py-2 text-xl font-dm rounded-lg border-3 border-border shadow-neo lightbgtransition">
                               Rendez-vous →
                          </p>
                     </Link>
@@ -63,28 +63,28 @@ export function MobileNav() {
                               </a>
                               <Link href={"/"}>
                                    <p
-                                        className={` ${pathname == "/" ? "bg-sec border-3 rounded-lg shadow-neo" : "bg-transparent"} px-6 py-2 `}
+                                        className={` ${pathname == "/" ? "bg-sec border-3  shadow-neo" : "hover:bg-darker"} rounded-lg px-6 py-2 `}
                                    >
                                         → Accueil
                                    </p>
                               </Link>
                               <Link href={"/services"}>
                                    <p
-                                        className={` ${pathname == "/services" ? "bg-sec border-3 rounded-lg shadow-neo" : "bg-transparent"} px-6 py-2 `}
+                                        className={` ${pathname == "/services" ? "bg-sec border-3  shadow-neo" : "hover:bg-darker"} rounded-lg px-6 py-2 `}
                                    >
                                         → Services
                                    </p>
                               </Link>
                               <Link href={"/assistance"}>
                                    <p
-                                        className={` ${pathname == "/assistance" ? "bg-sec border-3 rounded-lg shadow-neo" : "bg-transparent"} px-6 py-2 `}
+                                        className={` ${pathname == "/assistance" ? "bg-sec border-3  shadow-neo" : "hover:bg-darker"} rounded-lg px-6 py-2 `}
                                    >
                                         → Assistance
                                    </p>
                               </Link>
 
                               <Link href={"/contact"} className="mt-auto mb-20">
-                                   <p className="bg-sec px-6 py-2 text-xl font-dm rounded-lg border-3 border-border shadow-neo">
+                                   <p className="bg-sec px-6 py-2 text-xl font-dm rounded-lg border-3 border-border shadow-neo lightbgtransition">
                                         Rendez-vous →
                                    </p>
                               </Link>

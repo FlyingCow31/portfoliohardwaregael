@@ -27,14 +27,14 @@ export default function Page() {
                                    Pas d'attente, pas de déplacements (surtout avec le prix de l'essence!).
                               </p>
                               <Link href={"https://wa.me/33658538254"} className="w-fit">
-                                   <div className="border-3 border-border shadow-neo bg-[#2F6B45] p-4 rounded-lg flex gap-6 items-center">
+                                   <div className="whtransition border-3 border-border shadow-neo bg-[#2F6B45] p-4 rounded-lg flex gap-6 items-center">
                                         <Image src={"/whicon.webp"} alt="Whatsapp Icon" height={30} width={30} />
                                         <p className=" text-center text-bg font-bold h-fit">Prennez Rendez-Vous →</p>
                                    </div>
                               </Link>
                          </div>
 
-                         <div className="*:p-4 *:px-8 lg:w-100 border-3 shadow-neo bg-whity rounded-lg row-start-1 col-start-4 col-span-1 h-fit mt-12 lg:mt-0">
+                         <div className="*:p-4 lg:*:p-8 lg:w-100 border-3 shadow-neo bg-whity rounded-lg row-start-1 col-start-4 col-span-1 h-fit mt-12 lg:mt-0">
                               <h2 className="text-2xl bg-main text-center border-b-3 text-whity">
                                    Inclus dans la prestation
                               </h2>

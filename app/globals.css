@@ -2,8 +2,11 @@
 
 :root {
      --main: #1b4967;
+     --main-darker: #123146;
      --sec: #5fa8da;
+     --sec-darker: #4982a8;
      --bg: #d7e8f4;
+     --bg-darker: #c3d2dd;
      --tint: #0b1c28;
      --whity: #fafdff;
      --shadow: 4px 6px 0px var(--tint);
@@ -11,6 +14,7 @@
 
 @theme {
      --color-bg: var(--bg);
+     --color-darker: var(--bg-darker);
      --color-main: var(--main);
      --color-sec: var(--sec);
      --color-tint: var(--tint);
@@ -42,7 +46,45 @@
      }
 }
 
+@keyframes clickAnim {
+     0% {
+          transform: translate(0, 0);
+          box-shadow: 4px 6px 0px var(--main);
+     }
+     100% {
+          transform: translate(2px, 3px);
+          box-shadow: 2px 3px 0px var(--main);
+     }
+}
+
 .borderimage {
      border: 2px var(--main) solid;
      box-shadow: 4px 6px 0px var(--main);
+}
+.clicanim {
+     transition:
+          transform 120ms ease-in-out,
+          box-shadow 120ms ease-in-out;
+}
+
+.darkbgtransition:hover {
+     background-color: var(--main-darker);
+     animation: clickAnim 120ms ease-in forwards;
+     transition: background-color 150ms ease-in-out;
+}
+.lightbgtransition:hover {
+     background-color: var(--sec-darker);
+     animation: clickAnim 120ms ease-in forwards;
+     transition: all 2ms ease-in-out;
+}
+.xlightbgtransition:hover {
+     background-color: var(--bg-darker);
+     animation: clickAnim 120ms ease-in forwards;
+     transition: all 2ms ease-in-out;
+}
+
+.whtransition:hover {
+     background-color: #235033;
+     animation: clickAnim 120ms ease-in forwards;
+     transition: all 2ms ease-in-out;
 }
