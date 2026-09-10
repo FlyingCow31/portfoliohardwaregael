@@ -9,7 +9,7 @@ import Footer from "../components/Footer"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-     title: "Contact ",
+     title: "Contact",
      description:
           "Contactez moi pour obtenir un devis gratuit pour votre montage, réparation, nettoyage de PC, solutions self-host ou autres services !",
      alternates: { canonical: "/contact" },

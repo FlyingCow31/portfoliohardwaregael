@@ -14,7 +14,7 @@ export const metadata: Metadata = {
      openGraph: {
           title: "Chez Gaël - Réparation et montage PC à Colomiers",
           description: "Diagnostic, montage, réparation et assistance informatique près de Toulouse.",
-          images: ["/og-home.png"],
+          images: ["/og-image.png"],
      },
      alternates: { canonical: "/" },
 }

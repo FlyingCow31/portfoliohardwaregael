@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 const SITE_URL = "https://hardware.gaeltournier.dev"
 
-const staticPages = ["", "services", "assistance", "contact", "mentions"]
+const staticPages = ["", "services", "assistance", "contact", "mentions", "cgv"]
 
 function generateSiteMap() {
      const urls = staticPages.map((p) => `${SITE_URL}/${p}`.replace(/([^:]\/)\/+$/, "$1"))

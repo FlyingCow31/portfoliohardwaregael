@@ -1,7 +1,17 @@
+import { Metadata } from "next"
 import Footer from "../components/Footer"
 import Navbar, { MobileNav } from "../components/Navbar"
 
-const verified = { nom: "", slot: "test", month: "test", message: "test", kind: "test", day: "mdl" }
+export const metadata: Metadata = {
+     title: "Mentions Légales Chez Gaël",
+     description: "Mentions légales du site de réparation de PC Chez Gaël.",
+     openGraph: {
+          title: "Chez Gaël - Mentions Légales",
+          description: "Mentions Légales Chez Gaël",
+          images: ["/og-image.png"],
+     },
+     alternates: { canonical: "/mentions" },
+}
 
 export default function Page() {
      return (
@@ -26,7 +36,7 @@ export default function Page() {
                               <br />
                               Code APE&nbsp;: 62.01Z — Programmation informatique
                               <br />
-                              Adresse e-mail&nbsp;:{" "}
+                              Adresse e-mail&nbsp;:
                               <a href="mailto:contact@gaeltournier.dev" className="underline">
                                    contact@gaeltournier.dev
                               </a>

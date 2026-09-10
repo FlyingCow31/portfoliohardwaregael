@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
                pour un(e) ${escapeHtml(verified.kind)}.
           </p>
           <p style="margin: 0 0 16px; font-size: 16px; white-space: pre-line">
-               Voila les détails que vous m'avez transmis: "${escapeHtml(verified.message)}"
+               Voilà les détails qui ont été transmis: "${escapeHtml(verified.message)}"
           </p>
           <p style="margin: 0 0 16px; font-size: 16px">
                Si vous avez une question, vous pouvez m'envoyer un message sur whatsapp uniquement au +33 6 58 53 82 54
