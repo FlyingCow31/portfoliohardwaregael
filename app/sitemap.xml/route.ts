@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-const SITE_URL = "https://hardware.gaeltournier.dev"
+const SITE_URL = "https://chezgael.fr"
 
 const staticPages = ["", "services", "assistance", "contact", "mentions", "cgv"]
 
