@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
           await transporter.verify()
 
           if (!parsed.success) {
-               return NextResponse.json({ error: parsed.error.issues[0].message, data: parsed }, { status: 400 })
+               return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 })
           }
 
           const verified = parsed.data
@@ -166,12 +166,11 @@ export async function POST(request: NextRequest) {
                html: clientMailHtml,
           })
 
-          return NextResponse.json({ ok: true, data: parsed })
+          return NextResponse.json({ ok: true })
      } catch (err) {
-          console.error("Contact API Error:", err)
           return NextResponse.json(
                {
-                    error: "Data has not been parsed correctly",
+                    error: "Il y a eu une erreur avec le formulaire !",
                     details: err instanceof Error ? err.message : String(err),
                },
                { status: 400 },

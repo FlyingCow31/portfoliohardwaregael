@@ -91,6 +91,7 @@ export default function ContactSection() {
 
                     setLoading(false)
                } else {
+                    setLoading(false)
                     setError(data.error)
 
                     if (data.error?.endsWith("jour!") || data.error?.endsWith("horaire!")) {
