@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
 
           const timeFillingForm = Date.now() - body.formLoadedAt
 
-          if (!body.formLoadedAt || timeFillingForm < 10000) {
+          if (!body.formLoadedAt || timeFillingForm < 5000) {
                return NextResponse.json({ error: "Formulaire Invalide." }, { status: 400 })
           }
 
